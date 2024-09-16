@@ -1,0 +1,248 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VFCollections Women's Kanchipuram Silk Saree</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: silver;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                padding: 20px;
+                flex-wrap: wrap;
+                border: yellow;
+            }
+
+            .left-image {
+                flex: 1;
+                max-width: 40vw;
+                /* Use vw for dynamic resizing */
+                margin-right: 20px;
+                animation: zoomIn 1s ease-out;
+            }
+
+            .left-image img {
+                width: 100%;
+                height: 645px;
+                border-radius: 10px;
+                border: 5px solid #ff7e5f;
+            }
+
+            .item-description {
+                flex: 1;
+                max-width: 60vw;
+                /* Use vw for dynamic resizing */
+                background: linear-gradient(135deg, Purple, #ff7e5f);
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                color: yellow;
+                text-align: center;
+                animation: fadeInUp 1s ease-in-out;
+                height: 100vh;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 10px;
+                color: yellowgreen;
+                font-family: 'Georgia', serif;
+            }
+
+            .rating {
+                font-size: 1.5em;
+                margin: 10px 0;
+                color: #f7c06b;
+            }
+
+            .price {
+                font-size: 1.4em;
+                margin: 20px 0;
+            }
+
+            .current-price {
+                color: #ffcc00;
+                font-weight: bold;
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            .savings {
+                display: block;
+                color: #ffeb3b;
+                margin: 5px 0;
+            }
+
+            .mrp {
+                text-decoration: line-through;
+                color: #ccc;
+            }
+
+            .emi,
+            .offers,
+            .returns-delivery {
+                margin: 10px 0;
+            }
+
+            p {
+                margin: 10px 0;
+                font-family: 'Verdana', sans-serif;
+            }
+
+            .returns-de.returns-delivery {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .delivery-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 18px;
+                /* Adds space between items */
+            }
+
+            .delivery-item i {
+                margin-right: 15px;
+                /* Adds space between icon and text */
+            }
+
+
+            @media (max-width: 800px) {
+                .container {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .left-image,
+                .item-description {
+                    max-width: 90vw;
+                }
+
+                .left-image {
+                    margin-right: 0;
+                    margin-bottom: 20px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                h1 {
+                    font-size: 1.5em;
+                }
+
+                .price {
+                    font-size: 1.2em;
+                }
+
+                .rating {
+                    font-size: 1.2em;
+                }
+
+                .current-price {
+                    font-size: 1.2em;
+                }
+            }
+
+            @keyframes zoomIn {
+                from {
+                    transform: scale(0.5);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    transform: translateY(100%);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes flip {
+                from {
+                    transform: rotateY(90deg);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: rotateY(0);
+                    opacity: 1;
+                }
+            }
+        </style>
+        <!-- FontAwesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="left-image">
+                <img src="./jpeg/s1.jpeg" alt="Kanchipuram Silk Saree">
+            </div>
+            <div class="item-description">
+                <h1>VFCollections Women's Kanchipuram Silk Pure Pattu Sarees with Blouse</h1>
+                <div class="rating">
+                    <span class="rating-stars">4.0</span> out of 5 stars (1 rating)
+                </div>
+                <div class="price">
+                    <span class="current-price">₹9,999.00</span>
+                    <span class="savings">38% off</span>
+                    <span class="mrp">M.R.P.: ₹15,999.00</span>
+                </div>
+                <p>Inclusive of all taxes</p>
+                <div class="emi">
+                    <p>EMI starts at ₹485</p>
+                    <p>No Cost EMI available</p>
+                    <p>Upto ₹450.24 EMI interest savings on Amazon Pay ICICI Bank Credit Cards</p>
+                </div>
+                <div class="offers">
+                    <p>Get GST invoice and save up to 28% on business purchases. Sign up for free</p>
+                </div>
+                
+                <div class="returns-delivery">
+                    <div class="delivery-item">
+                        <i class="fas fa-exchange-alt"></i>
+                        <p>10 days Exchange & Replacement only</p>
+                    </div>
+
+                    <div class="delivery-item">
+                        <i class="fas fa-money-check-alt"></i>
+                        <p>Pay on Delivery available</p>
+                    </div>
+
+                    <div class="delivery-item">
+                        <i class="fas fa-truck"></i>
+                        <p>Free Delivery</p>
+                    </div>
+
+                    <div class="delivery-item">
+                        <i class="fas fa-box-open"></i>
+                        <p>Delivered by Amazon</p>
+                    </div>
+                </div>
+            </div>
+            
+
+    </body>
+
+    </html>

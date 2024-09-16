@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        /* Start navbar */
+        /* Header styles */
+        header {
+            background-color: #232F3E;
+            /* Amazon-like dark background */
+            color: white;
+            /* White text color */
+            display: flex;
+            /* Flexbox for layout */
+            justify-content: space-between;
+            /* Space between logo, nav, and search */
+            align-items: center;
+            /* Align items vertically center */
+            padding: 10px 20px;
+            /* Padding inside header */
+            position: fixed;
+            /* Fix the navbar at the top */
+            top: 0;
+            /* Align it to the top of the viewport */
+            left: 0;
+            /* Align it to the left of the viewport */
+            width: 100%;
+            /* Full width */
+            z-index: 1000;
+            /* Ensure it sits above other content */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            /* Add a subtle shadow */
+        }
+
+        /* Animated logo styles */
+        @keyframes logoAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        header .logo img {
+            width: 100px;
+            animation: logoAnimation 5s infinite;
+        }
+
+        /* Navigation styles */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            display: block;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #232F3E;
+            padding: 10px;
+            list-style: none;
+            min-width: 150px;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            padding: 5px 0;
+        }
+
+        /* Search bar styles */
+        .search-bar {
+            display: flex;
+            gap: 5px;
+        }
+
+        .search-bar input {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .search-bar button {
+            padding: 5px 10px;
+            background-color: #FFA41C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Navigation buttons styles */
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #FFA41C;
+            border-radius: 5px;
+            background-color: #232F3E;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #FFA41C;
+        }
+
+        .nav-button.back {
+            margin-right: 10px;
+        }
+
+        .nav-button.forward {
+            margin-left: 10px;
+        }
+
+        /* Ensure content is not hidden behind the navbar */
+        main {
+            padding-top: 60px;
+            /* Adjust according to your header height */
+        }
+
+        /* End navbar */
+    </style>
+</head>
+<body>
+    <!-- Start navbar -->
+    <!-- Header Section -->
+    <header>
+        <!-- Animated Logo -->
+        <div class="logo">
+            <img src="./jpeg/png/AMAZON_LOGO.png" alt="Amazon OnLine Shopping">
+        </div>
+        <!-- Navigation Menu with Dropdown -->
+        <nav>
+            <ul>
+                <li><a href="pattu_Sarees.html">Home</a></li>
+                <li>
+                    <a href="#">Jewellery</a>
+                    <ul>
+                        <li><a href="jewellery_Images.html">Jewellery Images</a></li>
+                        <li><a href="Jewellery_Videos.html">Jewellery Videos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+        </nav>
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+            <button>Search</button>
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <a href="jewellery_Images.html" class="nav-button back">Back</a>
+            <a href="Jewellery_Videos.html" class="nav-button forward">Forward</a>
+        </div>
+    </header>
+    <!-- End navbar -->
+
+    <!-- Main content to demonstrate the padding adjustment -->
+    <main>
+        <h1>Welcome to the website!</h1>
+        <p>Content goes here...</p>
+    </main>
+</body>
+</html>

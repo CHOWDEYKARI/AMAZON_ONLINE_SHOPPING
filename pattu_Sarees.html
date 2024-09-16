@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Collection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: silver;
+            margin: 0;
+            padding: 0;
+        }
+
+/* start navbar and footer */
+.navbar img.logo {
+            width: 130px;
+            /* Adjust size as needed */
+            animation: spin 99s linear infinite;
+        }
+
+        /* start Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #282c34;
+            padding: 1rem 2rem;
+            font-family: 'Arial', sans-serif;
+            position: fixed;
+            /* Fixes the navbar at the top */
+            top: 0;
+            /* Positions it at the top of the viewport */
+            width: 100%;
+            /* Ensures it spans the full width of the viewport */
+            z-index: 1000;
+            /* Keeps the navbar on top of other elements */
+        }
+
+        .navbar img.logo {
+            width: 130px;
+            /* Adjust size as needed */
+            animation: spin 8s linear infinite;
+        }
+
+        .nav-links {
+            margin-right: 1px;
+        }
+
+        .navbar a {
+            color: #e1e1e1;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #ffeb3b;
+        }
+
+        /* Back, Home, Forward Buttons */
+        /* Back, Home, Forward Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-button.back {
+            margin-left: 60px;
+            background-color: #007bff;
+            /* Blue background for Back button */
+        }
+
+        .nav-button.home {
+            background-color: #ffc107;
+            /* Yellow background for Home button */
+        }
+
+        .nav-button.forward {
+            background-color: #28a745;
+            /* Green background for Forward button */
+        }
+
+        .nav-button:hover {
+            opacity: 0.8;
+        }
+
+        /* the end back, home, forward nav buttons */
+
+        /* Footer Styling */
+        .footer {
+            background-color: #282c34;
+            color: #e1e1e1;
+            width: 100%;
+            padding: 3rem 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .footer .heading {
+            color: #ffeb3b;
+            text-transform: uppercase;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+            text-align: center;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        .footer .content {
+            display: flex;
+            justify-content: space-around;
+            margin: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .footer .content div {
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ff5722, #03a9f4, #4caf50, #f44336);
+            border-image-slice: 1;
+            border-radius: 12px;
+            padding: 7px;
+            margin: 0.5rem;
+            width: 22%;
+            background-color: #3c3f41;
+            color: yellow;
+        }
+
+        .footer .content p {
+            margin-bottom: 1rem;
+        }
+
+        .footer .content a {
+            text-decoration: none;
+            color: yellow;
+            transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+        }
+
+        .footer .content a:hover {
+            color: #ff5722;
+            text-shadow: 1px 1px 2px rgba(255, 87, 34, 0.6);
+        }
+
+        .footer .content h4 {
+            margin-bottom: 1rem;
+            font-size: 22px;
+            color: #ffeb3b;
+        }
+
+        footer {
+            text-align: center;
+            margin: 2rem auto;
+            border-top: 3px solid #ff5722;
+            padding-top: 1rem;
+        }
+
+        footer hr {
+            margin: 2rem 0;
+            border: 0;
+            border-top: 2px dashed #ff5722;
+        }
+
+        .footer-text {
+            font-size: 21px;
+            color: #e1e1e1;
+            animation: textAnimation 5s infinite;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .footer .content {
+                display: block;
+            }
+
+            .footer .content div {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .footer .content div {
+                width: 48%;
+            }
+        }
+
+        /* Animations */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+                color: #ff5722;
+            }
+
+            25% {
+                opacity: 1;
+                transform: translateY(0);
+                color: #03a9f4;
+            }
+
+            50% {
+                opacity: 0.8;
+                color: #4caf50;
+            }
+
+            75% {
+                opacity: 1;
+                color: #f44336;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        .footer-text {
+            font-size: 21px;
+            color: #e1e1e1;
+            animation: textAnimation 5s infinite;
+            display: inline-block;
+        }
+
+        /* the end footer */
+
+        /* start social media */
+        /* Sidebar Styles */
+        .social_Media_Icons_sidebar {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .social_Media_Icons_link {
+            display: block;
+            margin: 10px 0;
+            width: 40px;
+            height: 40px;
+
+            element {
+                background-color: white;
+                /* Sets the background color to white */
+                border: none;
+                /* Removes any border */
+            }
+
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .social_Media_Icons_link img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social_Media_Icons_link:hover {
+            transform: scale(1.1);
+        }
+
+        /* the end social media */
+
+
+        /* start chatbot */
+
+        /* start Chatbot Styles */
+        #chat-container {
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            /* Ensure it appears above other content */
+        }
+
+        #chat-container.minimized {
+            height: 50px;
+        }
+
+        #chat-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        #chat-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #chat-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        #chat-content {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        #user-input {
+            width: calc(100% - 60px);
+            height: 50px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        #send-btn {
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #send-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #chat-content div.user {
+            text-align: right;
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+        #chat-content div.bot {
+            text-align: left;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .video-grid video {
+                width: 100%;
+            }
+        }
+
+        /*---the end chatbot-*/
+
+/* the end navbar and footer */
+
+
+        /* Main content styling */
+        main {
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #232F3E;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .accordion {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .accordion-title {
+            background-color: #232F3E;
+            color: #fff;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        .accordion-content p {
+            margin: 0;
+        }
+
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .product {
+            border: 4px solid blue;
+            padding: 20px;
+            background-color: yellow;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.1s ease;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product-description {
+            margin-top: 10px;
+            font-size: 10px;
+        }
+
+        .price {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .current-price {
+            color: blue;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .savings {
+            color: blue;
+        }
+
+        .mrp {
+            text-decoration: line-through;
+            color: blue;
+        }
+
+        /* Unique Animations for each product */
+        .product-1 {
+            animation: fadeIn 2s ease-in;
+        }
+
+        .product-2 {
+            animation: slideInLeft 2s ease;
+        }
+
+        .product-3 {
+            animation: bounceIn 2s ease-in-out;
+        }
+
+        .product-4 {
+            animation: flipInY 2s ease-in;
+        }
+
+        .product-5 {
+            animation: zoomIn 2s ease-in;
+        }
+
+        .product-6 {
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .product-7 {
+            animation: rotateIn 2s ease-in;
+        }
+
+        .product-8 {
+            animation: scaleUp 2s ease-in;
+        }
+
+        .product-9 {
+            animation: lightSpeedIn 2s ease-in;
+        }
+
+        .product-10 {
+            animation: slideInRight 2s ease;
+        }
+
+        .product-11 {
+            animation: bounceInDown 2s ease-in-out;
+        }
+
+        .product-12 {
+            animation: flipInX 2s ease-in;
+        }
+
+        .product-13 {
+            animation: rollIn 2s ease-in;
+        }
+
+        .product-14 {
+            animation: zoomOut 2s ease-in;
+        }
+
+        .product-15 {
+            animation: fadeInDown 2s ease-in-out;
+        }
+
+        .product-16 {
+            animation: slideInUp 2s ease;
+        }
+
+        .product-17 {
+            animation: rotateInDownRight 2s ease-in;
+        }
+
+        .product-18 {
+            animation: fadeInLeft 2s ease-in-out;
+        }
+
+        .product-19 {
+            animation: bounceInRight 2s ease-in;
+        }
+
+        .product-20 {
+            animation: lightSpeedOut 2s ease;
+        }
+
+        .product-21 {
+            animation: zoomInDown 2s ease-in-out;
+        }
+
+        .product-22 {
+            animation: flipInY 2s ease-in;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes flipInY {
+            from {
+                transform: rotateY(-90deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: rotateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                transform: rotate(-200deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: rotate(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes lightSpeedIn {
+            from {
+                transform: translateX(100%) skewX(-30deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceInDown {
+            0% {
+                transform: translateY(-1000px);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateY(30px);
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flipInX {
+            from {
+                transform: rotateX(90deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: rotateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rollIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%) rotate(-120deg);
+            }
+
+            70% {
+                opacity: 1;
+                transform: translateX(0) rotate(0);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotateInDownRight {
+            from {
+                opacity: 0;
+                transform: rotate(45deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceInRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateX(-20px);
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateX(10px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes lightSpeedOut {
+            from {
+                transform: translateX(0) skewX(0deg);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(100%) skewX(30deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes zoomInDown {
+            from {
+                transform: scale(0.5) translateY(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+
+        /* start footer */
+        .footer {
+            background-color: #282c34;
+            color: #e1e1e1;
+            width: 100%;
+            padding: 3rem 0;
+            position: relative;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .footer .heading {
+            color: #ffeb3b;
+            max-width: 1010px;
+            width: 90%;
+            text-transform: uppercase;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        .footer .content {
+            display: flex;
+            justify-content: space-around;
+            margin: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .footer .content div {
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ff5722, #03a9f4, #4caf50, #f44336);
+            border-image-slice: 1;
+            border-radius: 12px;
+            padding: 7px;
+            margin: 0.5rem;
+            width: 22%;
+            background-color: #3c3f41;
+            color: yellow;
+        }
+
+        .footer .content p {
+            margin-bottom: 1rem;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        .footer .content a {
+            text-decoration: none;
+            color: yellow;
+            transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .footer .content a:hover {
+            color: #ff5722;
+            text-shadow: 1px 1px 2px rgba(255, 87, 34, 0.6);
+        }
+
+        .footer .content h4 {
+            margin-bottom: 1rem;
+            font-size: 22px;
+            color: #ffeb3b;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        footer {
+            text-align: center;
+            margin: 2rem auto;
+            border-top: 3px solid #ff5722;
+            padding-top: 1rem;
+            font-family: 'Tahoma', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer hr {
+            margin: 2rem 0;
+            border: 0;
+            border-top: 2px dashed #ff5722;
+            border-radius: 5px;
+        }
+
+        .footer-text {
+            font-size: 21px;
+            color: #e1e1e1;
+            animation: textAnimation 5s infinite;
+            display: inline-block;
+        }
+
+        @media (max-width: 767px) {
+            .footer .content {
+                display: block;
+                font-size: 14px;
+            }
+
+            .footer .content div {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .footer .content {
+                font-size: 16px;
+            }
+
+            .footer .content div {
+                width: 48%;
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 500px) {
+            .footer {
+                position: static;
+            }
+        }
+
+        /* Animations */
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+                color: #ff5722;
+            }
+
+            25% {
+                opacity: 1;
+                transform: translateY(0);
+                color: #03a9f4;
+            }
+
+            50% {
+                opacity: 0.8;
+                color: #4caf50;
+            }
+
+            75% {
+                opacity: 1;
+                color: #f44336;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+                color: ye;
+            }
+        }
+
+        /* the end footer */
+
+        /* start back and forward */
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            /* Remove underline */
+            color: white;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .nav-button.back {
+            background-color: #007bff;
+            /* Blue background for Back button */
+        }
+
+        .nav-button.forward {
+            background-color: #28a745;
+            /* Green background for Forward button */
+        }
+
+        .nav-button:hover {
+            opacity: 0.8;
+        }
+
+        /* the end back and forward buttons */
+    </style>
+</head>
+
+<body>
+    <!-- Start navbar -->
+    <!-- Header Section -->
+    <header>
+        <!-- Animated Logo -->
+        <div class="logo">
+            <img src="./jpeg/png/AMAZON_LOGO.png" alt="Amazon OnLine Shopping">
+        </div>
+        <!-- Navigation Menu with Dropdown -->
+        <nav>
+            <ul>
+                <li><a href="pattu_Sarees.html">Home</a></li>
+                <ul>
+                    <li><a href="jewellery_Images.html">Jewellery_Images</a></li>
+                    <li><a href="Jewellery_Videos.html">Jewellery_Videos</a></li>
+
+                </ul>
+                </li>
+
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+
+        </nav>
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+            <button>Search</button>
+
+        </div>
+        <!--start back and forward buttons  -->
+        <div class="nav-buttons">
+            <a href="jewellery_Images.html" class="nav-button back">Back</a>
+            <a href="Jewellery_Videos.html" class="nav-button forward">Forward</a>
+        </div>
+
+        <!--the end back and forward buttons  -->
+
+    </header>
+    <!-- End navbar -->
+
+
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product product-1">
+            <img src="./JPEG/s1.jpeg" alt="Product 1">
+            <div class="product-description">
+                <h2>C J Enterprise Women’s Pure Kanjivaram Soft Silk Saree With Blouse Piece for Wedding (Pari9016)</h2>
+                <div class="price">
+                    <span class="current-price">₹4,999.00</span>
+                    <span class="savings">20% off</span>
+                    <span class="mrp">M.R.P.: ₹6,199.00</span>
+                </div>
+                <p>Exclusive offer!</p>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product product-2">
+            <img src="./JPEG/s2.jpeg" alt="Product 2">
+            <div class="product-description">
+                <h2>Perabin Women's Pure Soft Kanjivaram Silk Saree For Wedding With Blouse Piece(Devratna Silver)</h2>
+                <div class="price">
+                    <span class="current-price">₹6,299.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹8,499.00</span>
+                </div>
+                <p>Best-selling product</p>
+            </div>
+
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product product-3">
+            <img src="./JPEG/s3.jpeg" alt="Product 3">
+            <div class="product-description">
+                <h2>Sugathari Women's Banarasi Saree Pure Paithani Kanjivaram Silk Soft new ladies 2024 Design Wear
+                    Pattu Sarees Latest Cotton Party Sari collections With Blouse Piece for Wedding sadi (PARI-206)</h2>
+                <div class="price">
+                    <span class="current-price">₹7,199.00</span>
+                    <span class="savings">30% off</span>
+                    <span class="mrp">M.R.P.: ₹10,499.00</span>
+                </div>
+                <p>Highly rated by customers</p>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product product-4">
+            <img src="./JPEG/s4.jpeg" alt="Product 4">
+            <div class="product-description">
+                <h2>Sugathari Women's Banarasi Saree Pure Kanjivaram Silk Saree Soft new ladies 2023 Design Wear Pattu
+                    Sarees Latest Cotton Party Sari collections With Blouse Piece for Wedding sadi (SAM PARI-104)</h2>
+                <div class="price">
+                    <span class="current-price">₹5,799.00</span>
+                    <span class="savings">15% off</span>
+                    <span class="mrp">M.R.P.: ₹6,799.00</span>
+                </div>
+                <p>New arrival</p>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product product-5">
+            <img src="./JPEG/s5.jpeg" alt="Product 5">
+            <div class="product-description">
+                <h2>C J Enterprise Women's Pure Kanjivaram Silk Saree Soft Banarasi With Blouse Piece Saree for Wedding
+                    (Champa)</h2>
+                <div class="price">
+                    <span class="current-price">₹8,999.00</span>
+                    <span class="savings">10% off</span>
+                    <span class="mrp">M.R.P.: ₹9,999.00</span>
+                </div>
+                <p>Limited time offer</p>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product product-6">
+            <img src="./JPEG/s6.jpeg" alt="Product 6">
+            <div class="product-description">
+                <h2>Perabin Women's Kanjivaram Banarasi silk Zari Woven Design Saree With Unstitched Blouse Piece (AA
+                    3007)</h2>
+                <div class="price">
+                    <span class="current-price">₹3,299.00</span>
+                    <span class="savings">30% off</span>
+                    <span class="mrp">M.R.P.: ₹4,699.00</span>
+                </div>
+                <p>Best deal</p>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product product-7">
+            <img src="./JPEG/s7.jpeg" alt="Product 7">
+            <div class="product-description">
+                <h2>LUNARA | Women’s Super Soft | Pure Litchi Silk Saree | Copper Zari | With Blouse Piece | Rapier
+                    Weave | Kanjivaram Style</h2>
+                <div class="price">
+                    <span class="current-price">₹5,999.00</span>
+                    <span class="savings">20% off</span>
+                    <span class="mrp">M.R.P.: ₹7,499.00</span>
+                </div>
+                <p>Top pick</p>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product product-8">
+            <img src="./JPEG/s8.jpeg" alt="Product 8">
+            <div class="product-description">
+                <h2>Sugathari Women's Banarasi Saree Pure Kanjivaram Silk Saree Soft new ladies 2023 Design Wear Pattu
+                    Sarees Latest Cotton Party Sari collections With Blouse Piece for Wedding sadi (PARI 122 MAROON)
+                </h2>
+                <div class="price">
+                    <span class="current-price">₹4,499.00</span>
+                    <span class="savings">15% off</span>
+                    <span class="mrp">M.R.P.: ₹5,299.00</span>
+                </div>
+                <p>Special offer</p>
+            </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product product-9">
+            <img src="./JPEG/s9.jpeg" alt="Product 9">
+            <div class="product-description">
+                <h2>Sugathari Women's Banarasi Saree Pure Kanjivaram Silk Saree Soft new ladies 2023 Design Wear Pattu
+                    Sarees Latest Cotton Party Sari collections With Blouse Piece for Wedding sadi (SAM PARI-104)</h2>
+                <div class="price">
+                    <span class="current-price">₹6,499.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹8,699.00</span>
+                </div>
+                <p>Customer favorite</p>
+            </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product product-10">
+            <img src="./JPEG/s10.jpeg" alt="Product 10">
+            <div class="product-description">
+                <h2>C J Enterprise Women's Kanchipuram Pattu Sarees With Blouse Piece</h2>
+                <div class="price">
+                    <span class="current-price">₹7,499.00</span>
+                    <span class="savings">20% off</span>
+                    <span class="mrp">M.R.P.: ₹9,399.00</span>
+                </div>
+                <p>Limited stock</p>
+            </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product product-11">
+            <img src="./JPEG/s11.jpeg" alt="Product 11">
+            <div class="product-description">
+                <h2>Sugathari Women's Banarasi Saree Pure Paithani Kanjivaram Silk Soft new ladies 2024 Design Wear
+                    Pattu Sarees Latest Cotton Party Sari collections With Blouse Piece for Wedding sadi (PARI-205)</h2>
+                <div class="price">
+                    <span class="current-price">₹5,199.00</span>
+                    <span class="savings">10% off</span>
+                    <span class="mrp">M.R.P.: ₹5,799.00</span>
+                </div>
+                <p>Exclusive deal</p>
+            </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product product-12">
+            <img src="./JPEG/s12.jpeg" alt="Product 12">
+            <div class="product-description">
+                <h2>C J Enterprise Women's Soft Pure Kanjivaram Silk Saree for Wedding Banarasi Style With Blouse Piece
+                    (Pari-S3 paithani)</h2>
+                <div class="price">
+                    <span class="current-price">₹4,799.00</span>
+                    <span class="savings">15% off</span>
+                    <span class="mrp">M.R.P.: ₹5,649.00</span>
+                </div>
+                <p>Best value</p>
+            </div>
+        </div>
+
+        <!-- Product 13 -->
+        <div class="product product-13">
+            <img src="./JPEG/s13.jpeg" alt="Product 13">
+            <div class="product-description">
+                <h2>C J Enterprise Women's Pure Soft Kanjivaram Silk Saree for Wedding With Blouse Piece (Pari20
+                    paithani)</h2>
+                <div class="price">
+                    <span class="current-price">₹6,699.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹8,999.00</span>
+                </div>
+                <p>Top rated</p>
+            </div>
+        </div>
+
+        <!-- Product 14 -->
+        <div class="product product-14">
+            <img src="./JPEG/s14.jpeg" alt="Product 14">
+            <div class="product-description">
+                <h2>Sugathari Women's Banarasi Saree Pure Kanjivaram Silk Saree Soft new ladies 2023 Design Wear Pattu
+                    Sarees Latest Party Sari collections With Blouse Piece for Wedding sadi (SAM PARI S-6)</h2>
+                <div class="price">
+                    <span class="current-price">₹3,799.00</span>
+                    <span class="savings">30% off</span>
+                    <span class="mrp">M.R.P.: ₹5,399.00</span>
+                </div>
+                <p>Unbeatable price</p>
+            </div>
+        </div>
+
+        <!-- Product 15 -->
+        <div class="product product-15">
+            <img src="./JPEG/s15.jpeg" alt="Product 15">
+            <div class="product-description">
+                <h2>Borcelle Women's Pure Kanjivaram Silk Saree Pattu With Blouse Piece for Wedding (paithani kismat-1)
+                </h2>
+                <div class="price">
+                    <span class="current-price">₹5,399.00</span>
+                    <span class="savings">15% off</span>
+                    <span class="mrp">M.R.P.: ₹6,349.00</span>
+                </div>
+                <p>Fantastic deal</p>
+            </div>
+        </div>
+
+        <!-- Product 16 -->
+        <div class="product product-16">
+            <img src="./JPEG/s16.jpeg" alt="Product 16">
+            <div class="product-description">
+                <h2>iZibra Sarees for Women Wear Cotton Silk Banarasi Sari Kanjivaram Soft 2024 Wedding Original Pure
+                    Kanchipuram Pattu Sadi with Blouse Piece (Barmasi)</h2>
+                <div class="price">
+                    <span class="current-price">₹7,899.00</span>
+                    <span class="savings">20% off</span>
+                    <span class="mrp">M.R.P.: ₹9,899.00</span>
+                </div>
+                <p>Highly recommended</p>
+            </div>
+        </div>
+
+        <!-- Product 17 -->
+        <div class="product product-17">
+            <img src="./JPEG/s17.jpeg" alt="Product 17">
+            <div class="product-description">
+                <h2>VJ Fashion Women Kerala Silk Blend Saree With Blouse Piece_freesize</h2>
+                <div class="price">
+                    <span class="current-price">₹4,699.00</span>
+                    <span class="savings">10% off</span>
+                    <span class="mrp">M.R.P.: ₹5,199.00</span>
+                </div>
+                <p>Great choice</p>
+            </div>
+        </div>
+
+        <!-- Product 18 -->
+        <div class="product product-18">
+            <img src="./JPEG/s18.jpeg" alt="Product 18">
+            <div class="product-description">
+                <h2>iZibra Sarees for Women Wear Cotton Silk Banarasi Sari Kanjivaram Soft Pure Paithani Wedding
+                    Original Kanchipuram Pattu Sadi with Blouse Piece 2024 (PANLICHI420)</h2>
+                <div class="price">
+                    <span class="current-price">₹5,799.00</span>
+                    <span class="savings">15% off</span>
+                    <span class="mrp">M.R.P.: ₹6,799.00</span>
+                </div>
+                <p>Limited edition</p>
+            </div>
+        </div>
+
+        <!-- Product 19 -->
+        <div class="product product-19">
+            <img src="./JPEG/s19.jpeg" alt="Product 19">
+            <div class="product-description">
+                <h2>C J Enterprise Women's Pure Banarasi Style Kanjivaram Silk Saree With Blouse Piece For Wedding
+                    (Flower jaal)</h2>
+                <div class="price">
+                    <span class="current-price">₹6,299.00</span>
+                    <span class="savings">20% off</span>
+                    <span class="mrp">M.R.P.: ₹7,899.00</span>
+                </div>
+                <p>Customer favorite</p>
+            </div>
+        </div>
+
+        <!-- Product 20 -->
+        <div class="product product-20">
+            <img src="./JPEG/s20.jpeg" alt="Product 20">
+            <div class="product-description">
+                <h2>MIMOSA Women's Woven Design Banarasi Style Organza Saree With Blouse Piece : Sa00001160Mr, Maroon
+                </h2>
+                <div class="price">
+                    <span class="current-price">₹8,499.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹11,299.00</span>
+                </div>
+                <p>Best value</p>
+            </div>
+        </div>
+
+        <!-- Product 21 -->
+        <div class="product product-20">
+            <img src="./JPEG/s21.jpeg" alt="Product 20">
+            <div class="product-description">
+                <h2>Jaffix Women's Most Trendy Heavy Embroidery Art Silk Fabric suitable in all other social gatherings
+                    5.5 Meter Saree with Unstitch 0.8 Meter 2024 New saree</h2>
+                <div class="price">
+                    <span class="current-price">₹8,499.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹11,299.00</span>
+                </div>
+                <p>Best value</p>
+            </div>
+        </div>
+
+
+        <!-- Product 22 -->
+        <div class="product product-20">
+            <img src="./JPEG/s22.jpeg" alt="Product 20">
+            <div class="product-description">
+                <h2>RUNAYA NX Women's Plain Art Silk Saree</h2>
+                <div class="price">
+                    <span class="current-price">₹8,499.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹11,299.00</span>
+                </div>
+                <p>Best value</p>
+            </div>
+        </div>
+
+
+        <!-- Product 23 -->
+        <div class="product product-20">
+            <img src="./JPEG/s23.jpeg" alt="Product 20">
+            <div class="product-description">
+                <h2>Product 20 Title</h2>
+                <div class="price">
+                    <span class="current-price">₹8,499.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹11,299.00</span>
+                </div>
+                <p>Best value</p>
+            </div>
+        </div>
+
+
+        <!-- Product 24 -->
+        <div class="product product-20">
+            <img src="./JPEG/s24.jpeg" alt="Product 20">
+            <div class="product-description">
+                <h2>Product 20 Title</h2>
+                <div class="price">
+                    <span class="current-price">₹8,499.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹11,299.00</span>
+                </div>
+                <p>Best value</p>
+            </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product product-2">
+            <img src="./JPEG/s2.jpeg" alt="Product 2">
+            <div class="product-description">
+                <h2>Perabin Women's Pure Soft Kanjivaram Silk Saree For Wedding With Blouse Piece(Devratna Silver)</h2>
+                <div class="price">
+                    <span class="current-price">₹6,299.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹8,499.00</span>
+                </div>
+                <p>Best-selling product</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- Carousel controls -->
+    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#carousel').carousel({
+                interval: 3000
+            });
+        });
+    </script>
+
+        <!-- start footer -->
+        <div class="footer">
+            <div class="heading">
+                <h2>MAHESHWER_CHOWDEYKARI<sup>™</sup></h2>
+            </div>
+            <div class="content">
+                <div class="services">
+                    <h4>Services</h4>
+                    <p><a href="#">App development</a></p>
+                    <p><a href="#">Web development</a></p>
+                    <p><a href="#">DevOps</a></p>
+                    <p><a href="#">Web designing</a></p>
+                </div>
+                <div class="social-media">
+                    <h4>Social</h4>
+                    <p><a href="#"><i class="fab fa-linkedin"></i> Linkedin</a></p>
+                    <p><a href="#"><i class="fab fa-twitter"></i> X</a></p>
+                    <p><a href="https://github.com/farazc60"><i class="fab fa-github"></i> Github</a></p>
+                    <p><a href="https://www.facebook.com/codewithfaraz"><i class="fab fa-facebook"></i> Facebook</a></p>
+                    <p><a href="https://www.instagram.com/codewithfaraz"><i class="fab fa-instagram"></i> Instagram</a></p>
+                </div>
+                <div class="links">
+                    <h4>Quick links</h4>
+                    <p><a href="#">Home</a></p>
+                    <p><a href="#">About</a></p>
+                    <p><a href="#">Blogs</a></p>
+                    <p><a href="#">Contact</a></p>
+                </div>
+                <div class="details">
+                    <h4 class="address">Address</h4>
+                    <p>H.No: 6-2-125,<br /> Kanteshwar,<br /> E - Seva Road,<br /> Near: New presidency Kids School,<br />
+                        Opposite: Nithya Sai Boys Hostel,<br /> Subhash Nagar,<br /> Nizamabad District,<br /> Telangana
+                        State,<br />Pin Code: 503002,<br /> India. <br /></p>
+                    <h4 class="mobile">Mobile</h4>
+                    <p><a href="#">+91-9848945713</a></p>
+                    <h4 class="mail">Email</h4>
+                    <p><a href="mailto:farazc60@gmail.com">maheshwer.chowdeykari</br>@gmail.com</a></p>
+                </div>
+            </div>
+       
+
+
+            <!-- START FOOTER -->
+
+ <!-- start fixed navbar -->
+ <nav class="navbar">
+    <img src="./jpeg/png/AMAZON_LOGO.png" alt="Animated Logo" class="logo">
+    <div class="nav-links">
+        <a href="home_Page.html">HOME PAGE</a>
+        <a href="about_Us.html">ABOUT US</a>
+        <a href="#">CONTACT US</a>
+        <a href="services.html">SERVICES</a>
+        <a href="signup_Login.html" class="nav-button back">Back</a>
+        <a href="home_Page.html" class="nav-button home">Home</a>
+        <a href="Jewellery_Videos.html" class="nav-button forward">Forward</a>
+    </div>
+</nav>
+<!-- Back, Home, Forward Buttons -->
+<div class="nav-buttons">
+    <a href="signup_Login.html" class="nav-button back">Back</a>
+    <a href="home_Page.html" class="nav-button home">Home</a>
+    <a href="Jewellery_Videos.html" class="nav-button forward">Forward</a>
+</div> </br></br></br>
+
+<!-- the end fixed navbar -->
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const accItems = document.querySelectorAll('.accordion-title');
+        
+        accItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const content = item.nextElementSibling;
+                
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    // Hide other open content
+                    document.querySelectorAll('.accordion-content').forEach(el => el.style.display = 'none');
+                    content.style.display = 'block';
+                }
+            });
+        });
+    });
+</script>
+
+
+<!-- start social media -->
+<div class="social_Media_Icons_sidebar">
+    <a href="https://www.whatsapp.com/" class="social_Media_Icons_link" data-voice="What's up"><img
+            src="./jpeg/png/whatsup.png" alt="WhatsApp"></a>
+    <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F" class="social_Media_Icons_link"
+        data-voice="Facebook"><img src="./jpeg/png/facebook.png" alt="Facebook"></a>
+    <a href="https://x.com/i/flow/login" class="social_Media_Icons_link" data-voice="X"><img src="./jpeg/png/x.png"
+            alt="X"></a>
+    <a href="https://www.instagram.com/accounts/login/?hl=en" class="social_Media_Icons_link"
+        data-voice="Instagram"><img src="./jpeg/png/instagram.png" alt="Instagram"></a>
+    <a href="https://in.linkedin.com/" class="social_Media_Icons_link" data-voice="LinkedIn"><img
+            src="./jpeg/png/linked_In.png" alt="LinkedIn"></a>
+</div>
+
+<script>
+    if (!('speechSynthesis' in window)) {
+        alert("Sorry, your browser does not support the Web Speech API.");
+    } else {
+        let currentUtterance = null;
+
+        function speakText(text) {
+            if (currentUtterance) {
+                speechSynthesis.cancel(); // Cancel any ongoing speech
+            }
+            currentUtterance = new SpeechSynthesisUtterance(text);
+            currentUtterance.onend = () => currentUtterance = null; // Clear reference when done
+            speechSynthesis.speak(currentUtterance);
+        }
+
+        document.querySelectorAll('.social_Media_Icons_link').forEach(icon => {
+            icon.addEventListener('mouseover', () => {
+                const voiceText = icon.getAttribute('data-voice');
+                if (voiceText) {
+                    speakText(voiceText);
+                }
+            });
+
+            icon.addEventListener('mouseout', () => {
+                if (currentUtterance) {
+                    speechSynthesis.cancel(); // Stop speech when the mouse leaves
+                }
+            });
+        });
+    }
+</script>
+<!-- the end social media -->
+
+
+<!---start chatbot-->
+<div id="chat-container">
+    <div id="chat-header">
+        <h2>Chat with us</h2>
+        <button id="close-btn">&times;</button>
+    </div>
+    <div id="chat-box">
+        <div id="chat-content">
+            <!-- Chat messages will be appended here -->
+        </div>
+        <textarea id="user-input" placeholder="Type your message here..."></textarea>
+        <button id="send-btn">Send</button>
+    </div>
+</div>
+
+<script>
+    // Navbar Username Blinking (Optional)
+    const usernameDisplay = document.getElementById('usernameDisplay');
+    const username = "Mr. AI";
+    if (usernameDisplay) {
+        usernameDisplay.innerText = `Welcome ${username}`;
+        usernameDisplay.style.display = 'inline';
+    }
+
+    // Chatbot Toggle
+    const chatContainer = document.getElementById('chat-container');
+    const closeBtn = document.getElementById('close-btn');
+    const sendBtn = document.getElementById('send-btn');
+    const userInput = document.getElementById('user-input');
+    const chatContent = document.getElementById('chat-content');
+
+    closeBtn.addEventListener('click', () => {
+        chatContainer.classList.toggle('minimized');
+    });
+
+    sendBtn.addEventListener('click', () => {
+        const userMessage = userInput.value.trim();
+        if (userMessage) {
+            const userDiv = document.createElement('div');
+            userDiv.className = 'user';
+            userDiv.innerText = `You: ${userMessage}`;
+            chatContent.appendChild(userDiv);
+
+            // Immediately respond with a bot message
+            const botDiv = document.createElement('div');
+            botDiv.className = 'bot';
+            botDiv.innerText = `Bot: Thank you for your message!`;
+            chatContent.appendChild(botDiv);
+
+            // Convert bot response to speech
+            const utterance = new SpeechSynthesisUtterance(botDiv.innerText);
+            speechSynthesis.speak(utterance);
+
+            chatContent.scrollTop = chatContent.scrollHeight;
+            userInput.value = '';
+        }
+    });
+</script>
+<!---the end chatbot-->
+
+<!--start Footer -->
+<div class="footer">
+    <div class="heading">
+        <h2>MAHESHWER_CHOWDEYKARI<sup>™</sup></h2>
+    </div>
+    <div class="content">
+        <div class="services">
+            <h4>Services</h4>
+            <p><a href="Jewellery_Videos.html">Jewellery_Videos</a></p>
+            <p><a href="jewellery_Images.html">Jewellery_Images</a></p>
+            <p><a href="pattu_Sarees.html">Pattu_Sarees</a></p>
+        </div>
+        <div class="social-media">
+            <h4>Social</h4>
+            <p><a href="https://in.linkedin.com/"><i class="fab fa-linkedin"></i> Linkedin</a></p>
+            <p><a href="https://x.com/i/flow/login"><i class="fab fa-twitter"></i> X</a></p>
+            <p><a href="https://github.com/"><i class="fab fa-github"></i> Github</a></p>
+            <p><a href="https://www.facebook.com/codewithfaraz"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://www.instagram.com/codewithfaraz"><i class="fab fa-instagram"></i> Instagram</a></p>
+        </div>
+        <div class="links">
+            <h4>Quick links</h4>
+            <p><a href="home_Page.html">HOME PAGE</a></p>
+            <p><a href="about_Us.html">ABOUT US</a></p>
+            <p><a href="contact_Us.html">CONTACT US</a></p>
+            <p><a href="services.html">SERVICES</a></p>
+        </div>
+        <div class="details">
+            <h4 class="address">Address</h4>
+            <p>H.No: 6-2-125,<br /> Kanteshwar,<br /> E - Seva Road,<br /> Near: New presidency Kids School,<br />
+                Opposite to Balamrai,<br /> Nizamabad, Telangana.<br /> Pin code: 503001</p>
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <div class="footer-text">
+            (C) ALL RIGHTS RESERVED 2024 - 2025 BY DEVELOPED AND DESIGNED BY </br> MAHESHWER_CHOWDEYKARI EDUREKA
+            NIZAMABAD.
+        </div>
+        <hr />
+    </footer>
+<!-- the end footer -->
+
+</div>
+<script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
+
+            <!-- THE END FOOTER -->
+</body>
+
+</html>

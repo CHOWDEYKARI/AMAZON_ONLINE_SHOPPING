@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup with Real OTP Verifications</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Signup</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobile" placeholder="Enter mobile number" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailOTP">Enter Email OTP</label>
+                    <input type="text" class="form-control" id="emailOTP" placeholder="Enter email OTP" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobileOTP">Enter Mobile OTP</label>
+                    <input type="text" class="form-control" id="mobileOTP" placeholder="Enter mobile OTP" required>
+                </div>
+                <button type="button" class="btn btn-custom btn-block" onclick="sendEmailAndMobileOTP()">Send OTPs</button>
+                <button type="submit" class="btn btn-success btn-block">Verify OTPs</button>
+            </form>
+            <div class="mt-3">
+                <p id="responseMessage" class="text-center"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Twilio and EmailJS Integration Scripts -->
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Initialize EmailJS
+    (function() {
+        emailjs.init('RKp_fp0d_Hmp44ApD');  // Add your EmailJS user ID here
+    })();
+
+    let generatedEmailOTP;
+    let generatedMobileOTP;
+
+    // Function to send email and mobile OTPs
+    function sendEmailAndMobileOTP() {
+        const email = document.getElementById('email').value;
+        const mobile = document.getElementById('mobile').value;
+        if (email && mobile) {
+            sendEmailOTP(email);
+            sendMobileOTP(mobile);
+        } else {
+            document.getElementById('responseMessage').textContent = 'Please enter valid email and mobile number.';
+        }
+    }
+
+    // Function to send email OTP via EmailJS
+    function sendEmailOTP(email) {
+        generatedEmailOTP = Math.floor(100000 + Math.random() * 900000); // Generate random 6-digit OTP
+        const emailParams = {
+            to_email: email,
+            otp: generatedEmailOTP
+        };
+
+        emailjs.send('service_v87d7n2', 'template_mbhhrq9', emailParams)
+            .then(function(response) {
+                console.log('Email OTP sent successfully', response.status, response.text);
+                document.getElementById('responseMessage').textContent = 'Email OTP sent successfully.';
+            }, function(error) {
+                console.log('Failed to send email OTP', error);
+                document.getElementById('responseMessage').textContent = 'Failed to send email OTP.';
+            });
+    }
+
+    // Function to send mobile OTP (Placeholder, needs backend integration)
+    function sendMobileOTP(mobile) {
+        generatedMobileOTP = Math.floor(100000 + Math.random() * 900000); // Generate random 6-digit OTP
+        // Call your backend here to send the mobile OTP using Twilio or similar SMS service
+        console.log(`Mobile OTP: ${generatedMobileOTP} sent to ${mobile}`);
+        document.getElementById('responseMessage').textContent += ' Mobile OTP sent successfully.';
+    }
+
+    // Form submission to verify OTPs
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const emailOTPInput = document.getElementById('emailOTP').value;
+        const mobileOTPInput = document.getElementById('mobileOTP').value;
+
+        if (emailOTPInput == generatedEmailOTP && mobileOTPInput == generatedMobileOTP) {
+            document.getElementById('responseMessage').textContent = 'OTP verification successful!';
+        } else {
+            document.getElementById('responseMessage').textContent = 'Invalid OTP. Please try again.';
+        }
+    });
+</script>
+
+</body>
+</html>

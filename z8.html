@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product {
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            flex: 1 1 calc(25% - 40px);
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .product img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .product-description {
+            text-align: center;
+            padding: 10px;
+        }
+        .price {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .current-price {
+            color: #333;
+            font-size: 1.2em;
+        }
+        .savings {
+            color: #e74c3c;
+            font-size: 1em;
+        }
+        .mrp {
+            color: #999;
+            text-decoration: line-through;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .button {
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .add-button {
+            background-color: #28a745;
+        }
+        .add-button:hover {
+            background-color: #218838;
+        }
+        .buy-button {
+            background-color: #007bff;
+        }
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+        .product:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .product {
+                flex: 1 1 calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .product {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Product 1 -->
+        <div class="product product-1">
+            <img src="./JPEG/s1.jpeg" alt="Product 1">
+            <div class="product-description">
+                <h2>Stunning Silk Saree with Gold Threadwork</h2>
+                <div class="price">
+                    <span class="current-price">₹5,499.00</span>
+                    <span class="savings">10% off</span>
+                    <span class="mrp">M.R.P.: ₹6,099.00</span>
+                </div>
+                <p>Elegant and timeless!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product product-2">
+            <img src="./JPEG/s2.jpeg" alt="Product 2">
+            <div class="product-description">
+                <h2>Traditional Kanjivaram Saree</h2>
+                <div class="price">
+                    <span class="current-price">₹6,799.00</span>
+                    <span class="savings">15% off</span>
+                    <span class="mrp">M.R.P.: ₹7,999.00</span>
+                </div>
+                <p>Rich and luxurious!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product product-3">
+            <img src="./JPEG/s3.jpeg" alt="Product 3">
+            <div class="product-description">
+                <h2>Exquisite Banarasi Silk Saree</h2>
+                <div class="price">
+                    <span class="current-price">₹7,299.00</span>
+                    <span class="savings">12% off</span>
+                    <span class="mrp">M.R.P.: ₹8,299.00</span>
+                </div>
+                <p>Beautiful craftsmanship!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product product-4">
+            <img src="./JPEG/s4.jpeg" alt="Product 4">
+            <div class="product-description">
+                <h2>Elegant Chiffon Saree</h2>
+                <div class="price">
+                    <span class="current-price">₹3,999.00</span>
+                    <span class="savings">20% off</span>
+                    <span class="mrp">M.R.P.: ₹4,999.00</span>
+                </div>
+                <p>Graceful and light!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product product-5">
+            <img src="./JPEG/s5.jpeg" alt="Product 5">
+            <div class="product-description">
+                <h2>Luxury Velvet Saree with Stone Work</h2>
+                <div class="price">
+                    <span class="current-price">₹6,299.00</span>
+                    <span class="savings">18% off</span>
+                    <span class="mrp">M.R.P.: ₹7,699.00</span>
+                </div>
+                <p>Opulent and elegant!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product product-6">
+            <img src="./JPEG/s6.jpeg" alt="Product 6">
+            <div class="product-description">
+                <h2>Modern Georgette Saree with Embroidery</h2>
+                <div class="price">
+                    <span class="current-price">₹4,499.00</span>
+                    <span class="savings">15% off</span>
+                    <span class="mrp">M.R.P.: ₹5,299.00</span>
+                </div>
+                <p>Stylish and chic!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product product-7">
+            <img src="./JPEG/s7.jpeg" alt="Product 7">
+            <div class="product-description">
+                <h2>Classic Cotton Saree with Traditional Print</h2>
+                <div class="price">
+                    <span class="current-price">₹2,799.00</span>
+                    <span class="savings">10% off</span>
+                    <span class="mrp">M.R.P.: ₹3,099.00</span>
+                </div>
+                <p>Comfortable and elegant!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product product-8">
+            <img src="./JPEG/s8.jpeg" alt="Product 8">
+            <div class="product-description">
+                <h2>Designer Saree with Mirror Work</h2>
+                <div class="price">
+                    <span class="current-price">₹5,999.00</span>
+                    <span class="savings">20% off</span>
+                    <span class="mrp">M.R.P.: ₹7,499.00</span>
+                </div>
+                <p>Unique and stylish!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product product-9">
+            <img src="./JPEG/s9.jpeg" alt="Product 9">
+            <div class="product-description">
+                <h2>Gorgeous Satin Saree with Lace</h2>
+                <div class="price">
+                    <span class="current-price">₹4,999.00</span>
+                    <span class="savings">10% off</span>
+                    <span class="mrp">M.R.P.: ₹5,599.00</span>
+                </div>
+                <p>Elegant and soft!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product product-10">
+            <img src="./JPEG/s10.jpeg" alt="Product 10">
+            <div class="product-description">
+                <h2>Vintage Saree with Antique Embroidery</h2>
+                <div class="price">
+                    <span class="current-price">₹6,499.00</span>
+                    <span class="savings">12% off</span>
+                    <span class="mrp">M.R.P.: ₹7,399.00</span>
+                </div>
+                <p>Traditional and exquisite!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product product-11">
+            <img src="./JPEG/s11.jpeg" alt="Product 11">
+            <div class="product-description">
+                <h2>Elegant Silk Saree with Gold Embellishments</h2>
+                <div class="price">
+                    <span class="current-price">₹5,299.00</span>
+                    <span class="savings">25% off</span>
+                    <span class="mrp">M.R.P.: ₹7,099.00</span>
+                </div>
+                <p>Classic elegance!</p>
+            </div>
+            <div class="button-container">
+                <button class="button add-button">Add</button>
+                <button class="button buy-button">Buy</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

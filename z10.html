@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar, Buttons, and Footer</title>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous">
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #282c34;
+            padding: 1rem 2rem;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar a {
+            color: #e1e1e1;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #ffeb3b;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+            font-family: 'Georgia', serif;
+            color: #ffeb3b;
+        }
+
+        /* Back, Home, Forward Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .nav-button.back {
+            background-color: #007bff; /* Blue background for Back button */
+        }
+
+        .nav-button.home {
+            background-color: #ffc107; /* Yellow background for Home button */
+        }
+
+        .nav-button.forward {
+            background-color: #28a745; /* Green background for Forward button */
+        }
+
+        .nav-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #282c34;
+            color: #e1e1e1;
+            width: 100%;
+            padding: 3rem 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .footer .heading {
+            color: #ffeb3b;
+            text-transform: uppercase;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+            text-align: center;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        .footer .content {
+            display: flex;
+            justify-content: space-around;
+            margin: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .footer .content div {
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ff5722, #03a9f4, #4caf50, #f44336);
+            border-image-slice: 1;
+            border-radius: 12px;
+            padding: 7px;
+            margin: 0.5rem;
+            width: 22%;
+            background-color: #3c3f41;
+            color: yellow;
+        }
+
+        .footer .content p {
+            margin-bottom: 1rem;
+        }
+
+        .footer .content a {
+            text-decoration: none;
+            color: yellow;
+            transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+        }
+
+        .footer .content a:hover {
+            color: #ff5722;
+            text-shadow: 1px 1px 2px rgba(255, 87, 34, 0.6);
+        }
+
+        .footer .content h4 {
+            margin-bottom: 1rem;
+            font-size: 22px;
+            color: #ffeb3b;
+        }
+
+        footer {
+            text-align: center;
+            margin: 2rem auto;
+            border-top: 3px solid #ff5722;
+            padding-top: 1rem;
+        }
+
+        footer hr {
+            margin: 2rem 0;
+            border: 0;
+            border-top: 2px dashed #ff5722;
+        }
+
+        .footer-text {
+            font-size: 21px;
+            color: #e1e1e1;
+            animation: textAnimation 5s infinite;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .footer .content {
+                display: block;
+            }
+
+            .footer .content div {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .footer .content div {
+                width: 48%;
+            }
+        }
+
+        /* Animations */
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+                color: #ff5722;
+            }
+
+            25% {
+                opacity: 1;
+                transform: translateY(0);
+                color: #03a9f4;
+            }
+
+            50% {
+                opacity: 0.8;
+                color: #4caf50;
+            }
+
+            75% {
+                opacity: 1;
+                color: #f44336;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">MAHESHWER_CHOWDEYKARI™</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <a href="#" class="nav-button back">Back</a>
+        <a href="#" class="nav-button home">Home</a>
+        <a href="#" class="nav-button forward">Forward</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="heading">
+            <h2>MAHESHWER_CHOWDEYKARI<sup>™</sup></h2>
+        </div>
+        <div class="content">
+            <div class="services">
+                <h4>Services</h4>
+                <p><a href="#">App development</a></p>
+                <p><a href="#">Web development</a></p>
+                <p><a href="#">DevOps</a></p>
+                <p><a href="#">Web designing</a></p>
+            </div>
+            <div class="social-media">
+                <h4>Social</h4>
+                <p><a href="#"><i class="fab fa-linkedin"></i> Linkedin</a></p>
+                <p><a href="#"><i class="fab fa-twitter"></i> X</a></p>
+                <p><a href="https://github.com/farazc60"><i class="fab fa-github"></i> Github</a></p>
+                <p><a href="https://www.facebook.com/codewithfaraz"><i class="fab fa-facebook"></i> Facebook</a></p>
+                <p><a href="https://www.instagram.com/codewithfaraz"><i class="fab fa-instagram"></i> Instagram</a></p>
+            </div>
+            <div class="links">
+                <h4>Quick links</h4>
+                <p><a href="#">Home</a></p>
+                <p><a href="#">About</a></p>
+                <p><a href="#">Blogs</a></p>
+                <p><a href="#">Contact</a></p>
+            </div>
+            <div class="details">
+                <h4 class="address">Address</h4>
+                <p>H.No: 6-2-125,<br /> Kanteshwar,<br /> E - Seva Road,<br /> Near: New presidency Kids School,<br /> Opposite: Nithya Sai Boys Hostel,<br /> Subhash Nagar,<br /> Nizamabad District,<br /> Telangana State,<br />Pin Code: 503002,<br /> India. <br /></p>
+                <h4 class="mobile">Mobile</h4>
+                <p><a href="#">+91-9848945713</a></p>
+                <h4 class="mail">Email</h4>
+                <p><a href="mailto:maheshwer.chowdeykari@gmail.com">maheshwer.chowdeykari@gmail.com</a></p>
+            </div>
+        </div>
+        <footer>
+            <p class="footer-text">© 2024 Maheshwer Chowdeykari Edureka Nizamabad. All Rights Reserved.</p>
+            <hr>
+            <p class="footer-text">Built with 💖 by Maheshwer Chowdeykari.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

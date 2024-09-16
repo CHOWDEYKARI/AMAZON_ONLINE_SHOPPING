@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Icons with Voice</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .social_Media_Icons_sidebar {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1000; /* Ensures sidebar is above other content */
+        }
+
+        .social_Media_Icons_link {
+            display: block;
+            margin: 10px 0;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .social_Media_Icons_link img {
+            width: 40px;
+            height: 40px;
+            transition: opacity 0.3s;
+        }
+
+        .social_Media_Icons_link:hover img {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        .social_Media_Icons_link:hover {
+            background-color: #444;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .social_Media_Icons_sidebar {
+                flex-direction: row;
+                top: auto;
+                bottom: 0;
+                transform: translateY(0);
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .social_Media_Icons_link {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .social_Media_Icons_link img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--start Sidebar Social Media Icons -->
+    <div class="social_Media_Icons_sidebar">
+        <a href="https://wa.me/" class="social_Media_Icons_link" data-voice="WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+        <a href="https://www.facebook.com/" class="social_Media_Icons_link" data-voice="Facebook">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        </a>
+        <a href="https://twitter.com/" class="social_Media_Icons_link" data-voice="X">
+            <img src="./jpeg/png/x.png" alt="X">
+        </a>
+        <a href="https://www.instagram.com/" class="social_Media_Icons_link" data-voice="Instagram">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+        <a href="https://www.linkedin.com/" class="social_Media_Icons_link" data-voice="LinkedIn">
+            <img src="./jpeg/png/linked_In.png" alt="LinkedIn">
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.social_Media_Icons_link');
+
+            links.forEach(link => {
+                link.addEventListener('mouseover', () => {
+                    const voiceText = link.getAttribute('data-voice');
+                    speak(voiceText);
+                });
+            });
+
+            function speak(text) {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    console.log('Speech synthesis not supported');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

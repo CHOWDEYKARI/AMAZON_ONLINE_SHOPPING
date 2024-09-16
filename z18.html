@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone with QR Code and Voice Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
+        /* Product grid */
+        .products {
+            padding: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .product-item {
+            border: 4px solid blue;
+            padding: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: silver;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .cart-button {
+            background-color: #FFA41C;
+            color: white;
+        }
+
+        .buy-button {
+            background-color: #28a745;
+            color: white;
+        }
+
+        /* Cart Modal Styles */
+        .cart-modal {
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 15px;
+            z-index: 100;
+            display: none;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .kart-btn {
+            position: relative;
+            background-color: #FFA41C;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .kart-btn #cart-count {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Amazon Clone</h1>
+        <button id="cart-btn" class="kart-btn">
+            Cart (<span id="cart-count">0</span>)
+        </button>
+    </div>
+
+    <!-- Product Section --> 
+    <section class="products">
+        <h2>Featured Products</h2>
+
+        <div class="product-grid">
+            <!-- Example Product 1 -->
+            <div class="product-item" data-title="Product 1" data-price="₹1999" data-description="This is an amazing product with great features." onmouseover="playVoice(this)" onmouseout="stopVoice()">
+                <img src="./JPEG/s1.jpeg" alt="Product 1">
+                <div class="product-description">
+                    <h2>C J Enterprise Women’s Pure Kanjivaram Soft Silk Saree With Blouse Piece for Wedding (Pari9016)</h2>
+                    <div class="price">
+                        <span class="current-price">₹4,999.00</span>
+                        <span class="savings">20% off</span>
+                        <span class="mrp">M.R.P.: ₹6,199.00</span>
+                    </div>
+                    <p>Exclusive offer!</p>
+                <div class="product-actions">
+                    <button class="cart-button" onclick="addToCart('./JPEG/s1.jpeg', 4999, 'C J Enterprise Women’s Pure Kanjivaram Soft Silk Saree With Blouse Piece for Wedding')"> <i class="fa fa-cart-plus"></i> Add to Cart</button>
+                    <button class="buy-button" onclick="buyNow()"> <i class="fa fa-credit-card"></i> Buy Now</button>
+                </div>
+            </div>
+        </div>
+            <!-- Example Product 2 -->
+            <div class="product-item" data-title="Product 2" data-price="₹2999" data-description="This product is even better with extra benefits." onmouseover="playVoice(this)" onmouseout="stopVoice()">
+                <img src="./JPEG/s2.jpeg" alt="Product 2">
+                <div class="product-description">
+                    <h2>Perabin Women's Pure Soft Kanjivaram Silk Saree For Wedding With Blouse Piece(Devratna Silver)</h2>
+                    <div class="price">
+                        <span class="current-price">₹6,299.00</span>
+                        <span class="savings">25% off</span>
+                        <span class="mrp">M.R.P.: ₹8,499.00</span>
+                    </div>
+                    <p>Best-selling product</p>
+
+                <div class="product-actions">
+                    <button class="cart-button" onclick="addToCart('./JPEG/s2.jpeg', 6299, 'Perabin Women\'s Pure Soft Kanjivaram Silk Saree For Wedding With Blouse Piece')"> <i class="fa fa-cart-plus"></i> Add to Cart</button>
+                    <button class="buy-button" onclick="buyNow()"> <i class="fa fa-credit-card"></i> Buy Now</button>
+                </div>
+            </div>
+        
+    </section> 
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <h2>Cart Items</h2>
+        <div id="cart-items"></div>
+        <button id="close-cart" onclick="closeCart()">Close Cart</button>
+    </div>
+
+    <script>
+        let cart = []; // Array to hold cart items
+
+        // Function to add items to the cart
+        function addToCart(imageSrc, price, title) {
+            const cartItem = { imageSrc, price, title };
+            cart.push(cartItem);
+            alert("Item added to cart!");
+            updateCartUI();
+            const utterance = new SpeechSynthesisUtterance(`${title} has been added to your cart.`);
+            speechSynthesis.speak(utterance);
+        }
+
+        // Function to update the cart UI
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = ""; // Clear the cart items
+            cart.forEach((item, index) => {
+                const cartItemDiv = document.createElement('div');
+                cartItemDiv.classList.add('cart-item');
+                cartItemDiv.innerHTML = `
+                    <img src="${item.imageSrc}" alt="${item.title}">
+                    <div>
+                        <h4>${item.title}</h4>
+                        <p>₹${item.price}</p>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItemDiv);
+            });
+
+            // Update cart count in the navbar
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        // Function to open cart modal
+        document.getElementById('cart-btn').addEventListener('click', () => {
+            document.getElementById('cart-modal').style.display = 'block';
+        });
+
+        // Function to close cart modal
+        function closeCart() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        // Function to play voice notification on hover
+        function playVoice(element) {
+            const title = element.getAttribute('data-title');
+            const price = element.getAttribute('data-price');
+            const description = element.getAttribute('data-description');
+            const utterance = new SpeechSynthesisUtterance(`${title} is available at ${price}. ${description}`);
+            speechSynthesis.speak(utterance);
+        }
+
+        // Function to stop voice notification on hover out
+        function stopVoice() {
+            speechSynthesis.cancel();
+        }
+    </script>
+</body>
+</html>

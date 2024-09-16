@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Grid</title>
+    <style>
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .product {
+            width: 30%;
+            border: 1px solid #ccc;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .product:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-description h2 {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .price {
+            margin: 10px 0;
+        }
+
+        .current-price {
+            color: #b12704;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .savings, .mrp {
+            font-size: 0.9em;
+            margin-left: 10px;
+            text-decoration: line-through;
+            color: #757575;
+        }
+
+        .product-actions {
+            margin-top: 10px;
+        }
+
+        .cart-button, .buy-button {
+            background-color: #ff9900;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cart-button:hover, .buy-button:hover {
+            background-color: #b12704;
+        }
+
+        .cart-nav-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .cart-nav-button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+
+<div class="product-grid">
+    <!-- Product 1 -->
+    <div class="product product-1">
+        <img src="./JPEG/s1.jpeg" alt="C J Enterprise Women’s Pure Kanjivaram Soft Silk Saree">
+        <div class="product-description">
+            <h2>C J Enterprise Women’s Pure Kanjivaram Soft Silk Saree With Blouse Piece for Wedding (Pari9016)</h2>
+            <div class="price">
+                <span class="current-price">₹4,999.00</span>
+                <span class="savings">20% off</span>
+                <span class="mrp">M.R.P.: ₹6,199.00</span>
+            </div>
+            <p>Exclusive offer!</p>
+            <div class="product-actions">
+                <button class="cart-button" onclick="addToCart('./JPEG/s1.jpeg', 4999, 'C J Enterprise Women’s Pure Kanjivaram Soft Silk Saree')">
+                    <i class="fa fa-cart-plus"></i> Add to Cart
+                </button>
+                <button class="buy-button" onclick="buyNow()">
+                    <i class="fa fa-credit-card"></i> Buy Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example Product 1 -->
+    <div class="product product-2">
+        <img src="./jpeg/j1.jpeg" alt="Product 1">
+        <div class="product-description">
+            <h2>Product Title 1</h2>
+            <div class="price">
+                <span class="current-price">₹1,999.00</span>
+            </div>
+            <p>This is an amazing product with great features.</p>
+            <div class="product-actions">
+                <button class="cart-button" onclick="addToCart('./jpeg/j1.jpeg', 1999, 'Product Title 1')">
+                    <i class="fa fa-cart-plus"></i> Add to Cart
+                </button>
+                <button class="buy-button" onclick="buyNow()">
+                    <i class="fa fa-credit-card"></i> Buy Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example Product 2 -->
+    <div class="product product-3">
+        <img src="./jpeg/j2.jpeg" alt="Product 2">
+        <div class="product-description">
+            <h2>Product Title 2</h2>
+            <div class="price">
+                <span class="current-price">₹2,999.00</span>
+            </div>
+            <p>This product is even better with extra benefits.</p>
+            <div class="product-actions">
+                <button class="cart-button" onclick="addToCart('./jpeg/j2.jpeg', 2999, 'Product Title 2')">
+                    <i class="fa fa-cart-plus"></i> Add to Cart
+                </button>
+                <button class="buy-button" onclick="buyNow()">
+                    <i class="fa fa-credit-card"></i> Buy Now
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar Cart Button -->
+<nav class="navbar">
+    <div class="cart">
+        <button class="cart-nav-button" onclick="openCart()">
+            <i class="fa fa-shopping-cart"></i> Cart
+        </button>
+    </div>
+</nav>
+
+<script>
+    function addToCart(image, price, title) {
+        alert(`${title} added to cart at ₹${price}`);
+    }
+
+    function buyNow() {
+        alert('Proceed to checkout');
+    }
+
+    function openCart() {
+        alert('Opening cart');
+    }
+</script>
+
+</body>
+</html>

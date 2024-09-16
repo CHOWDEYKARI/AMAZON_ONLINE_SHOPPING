@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Navbar with Animated Logo</title>
+    <style>
+        /* Fixed Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Animated Logo */
+        .logo {
+            height: 40px;
+            width: auto;
+            animation: spin 5s infinite linear;
+        }
+
+        /* Animation for spinning */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Navbar Links */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .nav-links a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Back, Home, Forward Buttons */
+        .nav-buttons {
+            display: flex;
+            gap: 10px; /* Adds spacing between buttons */
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-button.back {
+            background-color: #007bff; /* Blue for Back */
+        }
+
+        .nav-button.home {
+            background-color: #ffc107; /* Yellow for Home */
+        }
+
+        .nav-button.forward {
+            background-color: #28a745; /* Green for Forward */
+        }
+
+        .nav-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Ensure buttons and navbar items stay in position */
+        .navbar, .nav-buttons {
+            flex-wrap: nowrap;
+        }
+
+        /* Extra styling to ensure other content doesn't overlap with the fixed navbar */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* This adds some padding to avoid content overlapping the fixed navbar */
+        main {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Navbar -->
+    <nav class="navbar">
+        <img src="./jpeg/png/AMAZON_LOGO.png" alt="Animated Logo" class="logo">
+        <div class="nav-links">
+            <a href="#">HOME PAGE</a>
+            <a href="#">ABOUT US</a>
+            <a href="#">CONTACT US</a>
+            <a href="#">SERVICES</a>
+        </div>
+        <div class="nav-buttons">
+            <a href="signup_Login.html" class="nav-button back">Back</a>
+            <a href="home_Page.html" class="nav-button home">Home</a>
+            <a href="Jewellery_Videos.html" class="nav-button forward">Forward</a>
+        </div>
+    </nav>
+    <!-- End Fixed Navbar -->
+
+    <main>
+        <h1>Welcome to the Home Page</h1>
+        <p>Here is some content that comes after the fixed navbar. Adjust the content to your liking!</p>
+    </main>
+
+</body>
+</html>
